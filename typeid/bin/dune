@@ -1,0 +1,9 @@
+(executable
+ (public_name typeid)
+ (name main)
+ (libraries typeid unix stdint batteries))
+
+(env
+ (dev
+  (flags
+   (:standard -w -32 -w -27 -w -10 -w -35))))
