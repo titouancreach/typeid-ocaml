@@ -19,7 +19,7 @@
  (name typeid)
  (synopsis "Typeid and UUIDv7 implementation in OCaml")
  (description "TypeId and UUIDv7 implementation in OCaml")
- (depends ocaml dune stdint batteries unix)
+ (depends ocaml dune stdint batteries)
  (tags
   (uuidv7 typeid)))
 

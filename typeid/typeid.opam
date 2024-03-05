@@ -13,7 +13,6 @@ depends: [
   "dune" {>= "3.12"}
   "stdint"
   "batteries"
-  "unix"
   "odoc" {with-doc}
 ]
 build: [
