@@ -5,7 +5,7 @@ let explode_string s = List.init (String.length s) (String.get s)
 let pad_and_normalize s =
   match explode_string s with
   | '0' :: 'b' :: xs ->
-      let padding = List.init (128 - List.length xs) (fun _ -> '0') in
+      let padding = List.init (130 - List.length xs) (fun _ -> '0') in
       BatString.of_list (padding @ xs)
   | _ -> raise (Invalid_argument "Invalid binary string")
 
@@ -51,7 +51,13 @@ let of_uuidv7 uuid =
         let bin_str = "0b" ^ BatString.of_list [ a; b; c; d; e ] in
         let as_int = Uint32.to_int (Uint32.of_string bin_str) in
         BatString.of_char (encode_char as_int) ^ aux (BatString.of_list xs)
-    | _ -> ""
+    | [] -> ""
+    | x ->
+        let error =
+          Printf.sprintf "Invalid binary string, %d char remaining"
+            (List.length x)
+        in
+        raise (Invalid_argument error)
   in
   let uint128 = Uuidv7.to_uint128 uuid in
   let str = Uint128.to_string_bin uint128 in
