@@ -4,7 +4,7 @@ synopsis: "Typeid and UUIDv7 implementation in OCaml"
 description: "TypeId and UUIDv7 implementation in OCaml"
 maintainer: ["CREACHC Titouan"]
 authors: ["CREACH Titouan"]
-license: "LICENSE"
+license: "MIT"
 tags: ["uuidv7" "typeid"]
 homepage: "https://github.com/titouancreach/typeid-ocaml"
 bug-reports: "https://github.com/titouancreach/typeid-ocaml/issues"
