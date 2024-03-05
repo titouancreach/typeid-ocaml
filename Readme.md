@@ -10,4 +10,8 @@ let () =
   Printf.printf "My id: %s \n" (Typeid.to_string id)
 ```
 
+> [!NOTE]
+> UuidV7 uses random bits so, you need to initialize the random pseudo generator yourself.
+
+
 
