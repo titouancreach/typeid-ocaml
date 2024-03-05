@@ -1,2 +1,3 @@
 (library
- (name typeid))
+ (name typeid)
+ (libraries unix stdint batteries))
