@@ -5,22 +5,22 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github titouancreach/typeid-ocaml))
 
-(authors "Author Name")
+(authors "CREACH Titouan")
 
-(maintainers "Maintainer Name")
+(maintainers "CREACHC Titouan")
 
 (license LICENSE)
 
-(documentation https://url/to/documentation)
+; (documentation https://url/to/documentation)
 
 (package
  (name typeid)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune)
+ (synopsis "Typeid and UUIDv7 implementation in OCaml")
+ (description "TypeId and UUIDv7 implementation in OCaml")
+ (depends ocaml dune stdint batteries unix)
  (tags
-  (topics "to describe" your project)))
+  (uuidv7 typeid)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
