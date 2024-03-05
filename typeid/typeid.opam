@@ -9,7 +9,7 @@ tags: ["uuidv7" "typeid"]
 homepage: "https://github.com/titouancreach/typeid-ocaml"
 bug-reports: "https://github.com/titouancreach/typeid-ocaml/issues"
 depends: [
-  "ocaml"
+  "ocaml" {>= "4.14"}
   "dune" {>= "3.12"}
   "stdint"
   "batteries"
