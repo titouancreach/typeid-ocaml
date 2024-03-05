@@ -11,7 +11,7 @@
 
 (maintainers "CREACHC Titouan")
 
-(license LICENSE)
+(license MIT)
 
 ; (documentation https://url/to/documentation)
 
