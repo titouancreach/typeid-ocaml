@@ -36,3 +36,21 @@ let make () =
   result
 
 let to_uint128 t = t
+let of_uint128 t = t
+let explode_string s = List.init (String.length s) (String.get s)
+
+(* to encode uuid as string*)
+let pad_to_32_hex hx =
+  match explode_string hx with
+  | '0' :: 'x' :: xs ->
+      let len = List.length xs in
+      let pad = 32 - len in
+      let pad = List.init pad (fun _ -> '0') in
+      BatString.of_list (pad @ xs)
+  | _ -> failwith "Invalid hex string"
+
+let insert_hyphen s =
+  Printf.sprintf "%s-%s-%s-%s-%s" (String.sub s 0 8) (String.sub s 8 4)
+    (String.sub s 12 4) (String.sub s 16 4) (String.sub s 20 12)
+
+let to_string n = insert_hyphen (pad_to_32_hex (Uint128.to_string_hex n))

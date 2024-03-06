@@ -1,2 +1,8 @@
 (test
- (name test_typeid))
+ (name test_typeid)
+ (libraries alcotest typeid))
+
+ (env
+  (dev
+   (flags
+    (:standard -w -32-27-10-35))))

@@ -13,7 +13,7 @@
 
 (license MIT)
 
-; (documentation https://url/to/documentation)
+(documentation https://github.com/titouancreach/typeid-ocaml)
 
 (package
  (name typeid)
@@ -22,6 +22,7 @@
  (depends
   (ocaml
    (>= 4.14))
+  (alcotest :with-test)
   dune
   stdint
   batteries)

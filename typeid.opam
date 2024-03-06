@@ -7,9 +7,11 @@ authors: ["CREACH Titouan"]
 license: "MIT"
 tags: ["uuidv7" "typeid"]
 homepage: "https://github.com/titouancreach/typeid-ocaml"
+doc: "https://github.com/titouancreach/typeid-ocaml"
 bug-reports: "https://github.com/titouancreach/typeid-ocaml/issues"
 depends: [
   "ocaml" {>= "4.14"}
+  "alcotest" {with-test}
   "dune" {>= "3.12"}
   "stdint"
   "batteries"
