@@ -54,3 +54,13 @@ let insert_hyphen s =
     (String.sub s 12 4) (String.sub s 16 4) (String.sub s 20 12)
 
 let to_string n = insert_hyphen (pad_to_32_hex (Uint128.to_string_hex n))
+
+let of_string s =
+  let s = String.lowercase_ascii s in
+  let s =
+    BatString.replace_chars
+      (fun c -> if c = '-' then "" else BatString.of_char c)
+      s
+  in
+  let s = "0x" ^ s in
+  Uint128.of_string s

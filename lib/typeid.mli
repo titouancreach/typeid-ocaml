@@ -14,4 +14,6 @@ val get_uuid : t -> Uuidv7.t
 val get_prefix: t -> string
 val get_suffix: t -> string
 
+val of_guid: string -> Uuidv7.t -> t
+
 module Uuidv7 = Uuidv7
