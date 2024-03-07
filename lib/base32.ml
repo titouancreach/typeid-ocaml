@@ -80,6 +80,13 @@ let decode_char = function
   | 'z' -> "11111" (* 31 *)
   | _ -> raise (Invalid_argument "Invalid argument, should be a 0 and 31")
 
+(* fixme: not the best way *)
+let is_char_b32 c =
+  try
+    ignore (decode_char c);
+    true
+  with Invalid_argument _ -> false
+
 let decode b32_encoded_string =
   let binary_string =
     List.fold_left
@@ -87,8 +94,11 @@ let decode b32_encoded_string =
       ""
       (explode_string b32_encoded_string)
   in
-  let uint128 = Uint128.of_string ("0b" ^ binary_string) in
-  Uuidv7.of_uint128 uint128
+  (* can throw if overflow *)
+  try
+    let uint128 = Uint128.of_string ("0b" ^ binary_string) in
+    Some (Uuidv7.of_uint128 uint128)
+  with _ -> None
 
 let encode uuid =
   let rec aux str =
