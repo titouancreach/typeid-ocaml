@@ -6,8 +6,13 @@ Usage:
 ```ocaml
 let () =
   Random.self_init ();
-  let id = Typeid.make "my_prefix" in
-  Printf.printf "My id: %s \n" (Typeid.to_string id)
+  let id = Typeid.make "myprefix" in
+  let id_str = Typeid.to_string id in
+  Printf.printf "%s" id_str;
+  match Typeid.from_string_option id_str with
+    | Some x -> (* my typeid *)
+    | None -> failWith "Can't parse typeid"
+
 ```
 
 > [!NOTE]
