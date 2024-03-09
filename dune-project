@@ -9,7 +9,7 @@
 
 (authors "CREACH Titouan")
 
-(maintainers "CREACHC Titouan")
+(maintainers "CREACH Titouan")
 
 (license MIT)
 
