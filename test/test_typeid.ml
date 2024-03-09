@@ -17,7 +17,7 @@ let () =
     Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000010" ""
       "0000000000000000000000000g"
   in
-  let thrirty_two =
+  let thirty_two =
     Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000020" ""
       "00000000000000000000000010"
   in
@@ -54,9 +54,9 @@ let () =
           test_case "Parse TypeId Max" `Quick max.parse;
           test_case "Decode TypeId max" `Quick max.encode;
           test_case "Check Prefix Max" `Quick max.check_prefix;
-          test_case "Decode 32 TypeId" `Quick thrirty_two.encode;
-          test_case "Parse 32 TypeId" `Quick thrirty_two.parse;
-          test_case "Check Prefix TypeId 2" `Quick thrirty_two.check_prefix;
+          test_case "Decode 32 TypeId" `Quick thirty_two.encode;
+          test_case "Parse 32 TypeId" `Quick thirty_two.parse;
+          test_case "Check Prefix TypeId 2" `Quick thirty_two.check_prefix;
           test_case "Parse TypeId 2" `Quick test.parse;
           test_case "Decode TypeId Valid" `Quick test.encode;
           test_case "Check Prefix TypeId Valid" `Quick test.check_prefix;
