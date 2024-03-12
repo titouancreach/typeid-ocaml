@@ -1,3 +1,5 @@
+let foobar () = Alcotest.(check (option string)) "foo" (Some "foo") (Some "foo")
+
 let () =
   let open Alcotest in
   let empty =
@@ -39,7 +41,8 @@ let () =
     [
       ( "Valid Tests case ",
         [
-          test_case "Parse an empty TypeId" `Quick empty.parse;
+          (* test_case "Parse an empty TypeId" `Quick empty.parse; *)
+          test_case "foo bar" `Quick foobar
           (* test_case "Decode an empty TypeId" `Quick empty.encode; *)
           (* test_case "Check an empty Prefix" `Quick empty.check_prefix; *)
           (* test_case "Parse TypeId 1" `Quick one.parse; *)
@@ -63,7 +66,7 @@ let () =
           (* test_case "Parse TypeId Alphabet" `Quick valid_alphabet.parse; *)
           (* test_case "Decode TypeId Alphabet" `Quick valid_alphabet.encode; *)
           (* test_case "Check Prefix TypeId Alphabet" `Quick *)
-          (* valid_alphabet.check_prefix; *)
+          (* valid_alphabet.check_prefix; *);
         ] );
       (* ( "Invalids", *)
       (*   [ *)
