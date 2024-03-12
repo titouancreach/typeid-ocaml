@@ -105,7 +105,7 @@ let encode uuid =
     match explode_string str with
     | a :: b :: c :: d :: e :: xs ->
         let bin_str = "0b" ^ BatString.of_list [ a; b; c; d; e ] in
-        let as_int = Uint32.to_int (Uint32.of_string bin_str) in
+        let as_int = Uint8.to_int (Uint8.of_string bin_str) in
         BatString.of_char (encode_char as_int) ^ aux (BatString.of_list xs)
     | [] -> ""
     | x ->
