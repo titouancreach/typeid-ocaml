@@ -89,10 +89,11 @@ let is_char_b32 c =
 
 let decode b32_encoded_string =
   let binary_string =
-    List.fold_left
-      (fun acc c -> acc ^ decode_char c)
-      ""
-      (explode_string b32_encoded_string)
+    "0"
+    (* List.fold_left *)
+    (*   (fun acc c -> acc ^ decode_char c) *)
+    (*   "" *)
+    (*   (explode_string b32_encoded_string) *)
   in
   (* can throw if overflow *)
   try
