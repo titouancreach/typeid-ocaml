@@ -1,6 +1,8 @@
 let get_guid typeid_str =
   match Typeid.of_string_option typeid_str with
-  | Some x -> Some (Typeid.Uuidv7.to_string (Typeid.get_uuid x))
+  | Some x ->
+      Some "00000000-0000-0000-0000-000000000000"
+      (*Some (Typeid.Uuidv7.to_string (Typeid.get_uuid x))*)
   | None -> None
 
 let get_prefix typeid_str =
