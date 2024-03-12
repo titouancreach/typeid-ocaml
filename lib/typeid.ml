@@ -29,18 +29,22 @@ let to_string = function
   | { prefix; suffix; _ } -> prefix ^ "_" ^ suffix
 
 let of_string_option str =
-  match String.split_on_char '_' str with
-  | [ prefix; suffix ]
-    when Result.is_ok (validate_prefix prefix)
-         && Result.is_ok (validate_suffix suffix) -> (
-      let uuid = Base32.decode suffix in
-      match uuid with
-      | Some uuid -> Some { prefix; uuid; suffix }
-      | None -> None)
-  | [ suffix ] when Result.is_ok (validate_suffix suffix) ->
-      let uuid = Base32.decode suffix in
-      Option.map (fun uuid -> { prefix = ""; uuid; suffix }) uuid
-  | _ -> None
+  match Base32.decode str with
+  | Some a -> Some { prefix = ""; uuid = a; suffix = str }
+  | None -> failwith "Invalid base32 string"
+
+(* match String.split_on_char '_' str with *)
+(* | [ prefix; suffix ] *)
+(*   when Result.is_ok (validate_prefix prefix) *)
+(*        && Result.is_ok (validate_suffix suffix) -> ( *)
+(*     let uuid = Base32.decode suffix in *)
+(*     match uuid with *)
+(*     | Some uuid -> Some { prefix; uuid; suffix } *)
+(*     | None -> None) *)
+(* | [ suffix ] when Result.is_ok (validate_suffix suffix) -> *)
+(*     let uuid = Base32.decode suffix in *)
+(*     Option.map (fun uuid -> { prefix = ""; uuid; suffix }) uuid *)
+(* | _ -> None *)
 
 let of_guid prefix uuid =
   let id = Base32.encode uuid in
