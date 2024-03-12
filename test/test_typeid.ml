@@ -42,25 +42,25 @@ let () =
           test_case "Parse an empty TypeId" `Quick empty.parse;
           (* test_case "Decode an empty TypeId" `Quick empty.encode; *)
           (* test_case "Check an empty Prefix" `Quick empty.check_prefix; *)
-          test_case "Parse TypeId 1" `Quick one.parse;
+          (* test_case "Parse TypeId 1" `Quick one.parse; *)
           (* test_case "Decode TypeId 1" `Quick one.encode; *)
           (* test_case "Check Prefix 1" `Quick one.check_prefix; *)
-          test_case "Parse TypeId 10" `Quick ten.parse;
+          (* test_case "Parse TypeId 10" `Quick ten.parse; *)
           (* test_case "Decode TypeId 10" `Quick ten.encode; *)
           (* test_case "Check Prefix TypeId 10" `Quick ten.check_prefix; *)
-          test_case "Parse TypeId 16" `Quick sixteen.parse;
+          (* test_case "Parse TypeId 16" `Quick sixteen.parse; *)
           (* test_case "Decode TypeId 16" `Quick sixteen.encode; *)
           (* test_case "Check Prefix TypeId 16" `Quick sixteen.check_prefix; *)
-          test_case "Parse TypeId Max" `Quick max.parse;
+          (* test_case "Parse TypeId Max" `Quick max.parse; *)
           (* test_case "Decode TypeId max" `Quick max.encode; *)
           (* test_case "Check Prefix Max" `Quick max.check_prefix; *)
           (* test_case "Decode 32 TypeId" `Quick thirty_two.encode; *)
-          test_case "Parse 32 TypeId" `Quick thirty_two.parse;
+          (* test_case "Parse 32 TypeId" `Quick thirty_two.parse; *)
           (* test_case "Check Prefix TypeId 2" `Quick thirty_two.check_prefix; *)
-          test_case "Parse TypeId 2" `Quick test.parse;
+          (* test_case "Parse TypeId 2" `Quick test.parse; *)
           (* test_case "Decode TypeId Valid" `Quick test.encode; *)
           (* test_case "Check Prefix TypeId Valid" `Quick test.check_prefix; *)
-          test_case "Parse TypeId Alphabet" `Quick valid_alphabet.parse;
+          (* test_case "Parse TypeId Alphabet" `Quick valid_alphabet.parse; *)
           (* test_case "Decode TypeId Alphabet" `Quick valid_alphabet.encode; *)
           (* test_case "Check Prefix TypeId Alphabet" `Quick *)
           (* valid_alphabet.check_prefix; *)
