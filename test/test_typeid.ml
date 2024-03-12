@@ -7,36 +7,36 @@ let () =
       "00000000000000000000000000"
   in
 
-  (* let one = *)
-  (*   Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000001" "" *)
-  (*     "00000000000000000000000001" *)
-  (* in *)
-  (* let ten = *)
-  (*   Valid_test.make_valid_test_case "00000000-0000-0000-0000-00000000000a" "" *)
-  (*     "0000000000000000000000000a" *)
-  (* in *)
-  (* *)
-  (* let sixteen = *)
-  (*   Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000010" "" *)
-  (*     "0000000000000000000000000g" *)
-  (* in *)
-  (* let thirty_two = *)
-  (*   Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000020" "" *)
-  (*     "00000000000000000000000010" *)
-  (* in *)
-  (* let max = *)
-  (*   Valid_test.make_valid_test_case "ffffffff-ffff-ffff-ffff-ffffffffffff" "" *)
-  (*     "7zzzzzzzzzzzzzzzzzzzzzzzzz" *)
-  (* in *)
-  (* let test = *)
-  (*   Valid_test.make_valid_test_case "01890a5d-ac96-774b-bcce-b302099a8057" *)
-  (*     "prefix" "prefix_01h455vb4pex5vsknk084sn02q" *)
-  (* in *)
-  (* *)
-  (* let valid_alphabet = *)
-  (*   Valid_test.make_valid_test_case "0110c853-1d09-52d8-d73e-1194e95b5f19" *)
-  (*     "prefix" "prefix_0123456789abcdefghjkmnpqrs" *)
-  (* in *)
+  let one =
+    Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000001" ""
+      "00000000000000000000000001"
+  in
+  let ten =
+    Valid_test.make_valid_test_case "00000000-0000-0000-0000-00000000000a" ""
+      "0000000000000000000000000a"
+  in
+
+  let sixteen =
+    Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000010" ""
+      "0000000000000000000000000g"
+  in
+  let thirty_two =
+    Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000020" ""
+      "00000000000000000000000010"
+  in
+  let max =
+    Valid_test.make_valid_test_case "ffffffff-ffff-ffff-ffff-ffffffffffff" ""
+      "7zzzzzzzzzzzzzzzzzzzzzzzzz"
+  in
+  let test =
+    Valid_test.make_valid_test_case "01890a5d-ac96-774b-bcce-b302099a8057"
+      "prefix" "prefix_01h455vb4pex5vsknk084sn02q"
+  in
+
+  let valid_alphabet =
+    Valid_test.make_valid_test_case "0110c853-1d09-52d8-d73e-1194e95b5f19"
+      "prefix" "prefix_0123456789abcdefghjkmnpqrs"
+  in
   run "TypeId"
     [
       ( "Valid Tests case ",
