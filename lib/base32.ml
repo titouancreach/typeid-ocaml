@@ -96,7 +96,10 @@ let decode b32_encoded_string =
   in
   (* can throw if overflow *)
   try
-    let uint128 = Uint128.of_string ("0b" ^ binary_string) in
+    Printf.printf "binary_string: 0b%s\n" binary_string;
+    let uint128 =
+      (*Uint128.of_string ("0b" ^ binary_string) *) Uint128.of_int 0
+    in
     Some (Uuidv7.of_uint128 uint128)
   with _ -> None
 
