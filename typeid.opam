@@ -17,6 +17,7 @@ depends: [
   "batteries"
   "odoc" {with-doc}
 ]
+available: arch != "arm32" & arch != "x86_32"
 build: [
   ["dune" "subst"] {dev}
   [
