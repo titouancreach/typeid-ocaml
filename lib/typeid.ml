@@ -2,10 +2,17 @@ type t = { prefix : string; uuid : Uuidv7.t; suffix : string }
 
 let validate_prefix prefix =
   if String.length prefix = 0 then Error "Prefix must be non-empty"
-  else if not (BatString.for_all BatChar.is_lowercase prefix) then
-    Error "Prefix must be all lowercase"
-  else if not (BatString.for_all BatChar.is_letter prefix) then
-    Error "Prefix must be [a-z]"
+  else if
+    not
+      (BatString.for_all (fun ch -> BatChar.is_lowercase ch || ch = '_') prefix)
+  then Error "Prefix must be all lowercase or underscore"
+  else if
+    not (BatString.for_all (fun ch -> BatChar.is_letter ch || ch = '_') prefix)
+  then Error "Prefix must be [a-z]"
+  else if String.starts_with ~prefix:"_" prefix then
+    Error "Prefix cannot start with _"
+  else if String.ends_with ~suffix:"_" prefix then
+    Error "Prefix cannot end with _"
   else if String.length prefix > 63 then
     Error "Prefix must be less than 64 characters"
   else Ok ()
@@ -29,18 +36,21 @@ let to_string = function
   | { prefix; suffix; _ } -> prefix ^ "_" ^ suffix
 
 let of_string_option str =
-  match String.split_on_char '_' str with
-  | [ prefix; suffix ]
-    when Result.is_ok (validate_prefix prefix)
-         && Result.is_ok (validate_suffix suffix) -> (
-      let uuid = Base32.decode suffix in
-      match uuid with
-      | Some uuid -> Some { prefix; uuid; suffix }
-      | None -> None)
-  | [ suffix ] when Result.is_ok (validate_suffix suffix) ->
-      let uuid = Base32.decode suffix in
-      Option.map (fun uuid -> { prefix = ""; uuid; suffix }) uuid
-  | _ -> None
+  try
+    match BatString.rsplit str ~by:"_" with
+    | prefix, suffix
+      when Result.is_ok (validate_prefix prefix)
+           && Result.is_ok (validate_suffix suffix) -> (
+        let uuid = Base32.decode suffix in
+        match uuid with
+        | Some uuid -> Some { prefix; uuid; suffix }
+        | None -> None)
+    | _ -> None
+  with
+  | Not_found when Result.is_ok (validate_suffix str) ->
+      let uuid = Base32.decode str in
+      Option.map (fun uuid -> { prefix = ""; uuid; suffix = str }) uuid
+  | Not_found -> None
 
 let of_guid prefix uuid =
   let id = Base32.encode uuid in
