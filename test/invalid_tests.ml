@@ -16,12 +16,6 @@ let prefix_period () =
     (Option.map Typeid.to_string
        (Typeid.of_string_option "pre.fix_00000000000000000000000000"))
 
-let prefix_underscore () =
-  Alcotest.(check (option string))
-    "The prefix can't have symbols, it needs to be alphabetic" None
-    (Option.map Typeid.to_string
-       (Typeid.of_string_option "pre_fix_00000000000000000000000000"))
-
 let prefix_ascii () =
   Alcotest.(check (option string))
     "The prefix can only have ascii letters" None
@@ -110,3 +104,15 @@ let suffix_overflow () =
     "The suffix should encode at most 128-bits" None
     (Option.map Typeid.to_string
        (Typeid.of_string_option "prefix_8zzzzzzzzzzzzzzzzzzzzzzzzz"))
+
+let underscore_at_start () =
+  Alcotest.(check (option string))
+    "The prefix can't start with an underscore" None
+    (Option.map Typeid.to_string
+       (Typeid.of_string_option "_prefix_00000000000000000000000000"))
+
+let underscore_at_end () =
+  Alcotest.(check (option string))
+    "The prefix can't end with an underscore" None
+    (Option.map Typeid.to_string
+       (Typeid.of_string_option "prefix__00000000000000000000000000"))

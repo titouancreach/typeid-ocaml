@@ -35,6 +35,11 @@ let () =
       "prefix" "prefix_0123456789abcdefghjkmnpqrs"
   in
 
+  let with_underscore =
+    Valid_test.make_valid_test_case "00000000-0000-0000-0000-000000000000"
+      "pr_efix_" "pr_efix_00000000000000000000000000"
+  in
+
   run "TypeId"
     [
       ( "Valid Tests case ",
@@ -64,6 +69,7 @@ let () =
           test_case "Decode TypeId Alphabet" `Quick valid_alphabet.encode;
           test_case "Check Prefix TypeId Alphabet" `Quick
             valid_alphabet.check_prefix;
+          test_case "Parse TypeId with underscore" `Quick with_underscore.parse;
         ] );
       ( "Invalids",
         [
@@ -71,8 +77,6 @@ let () =
             Invalid_tests.prefix_uppercase;
           test_case "With prefix numeric" `Quick Invalid_tests.prefix_numeric;
           test_case "With prefix period" `Quick Invalid_tests.prefix_period;
-          test_case "With prefix underscore" `Quick
-            Invalid_tests.prefix_underscore;
           test_case "With prefix non ascii" `Quick Invalid_tests.prefix_ascii;
           test_case "With prefix spaces" `Quick Invalid_tests.prefix_space;
           test_case "With prefix too long" `Quick Invalid_tests.prefix_length;
@@ -93,5 +97,9 @@ let () =
           test_case "With suffix with hyphens crockford" `Quick
             Invalid_tests.suffix_hyphens_crockford;
           test_case "With suffix overflow" `Quick Invalid_tests.suffix_overflow;
+          test_case "Prefix with underscore at start" `Quick
+            Invalid_tests.underscore_at_start;
+          test_case "Prefix with underscore at end" `Quick
+            Invalid_tests.underscore_at_end;
         ] );
     ]
